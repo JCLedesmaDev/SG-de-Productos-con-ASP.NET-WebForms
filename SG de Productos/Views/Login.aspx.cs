@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace SG_de_Productos
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Login : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void logOut(object sender, EventArgs e)
-        {
-            Session.Remove("UserData");
-            Response.Redirect("/Views/Login.aspx");
         }
     }
 }

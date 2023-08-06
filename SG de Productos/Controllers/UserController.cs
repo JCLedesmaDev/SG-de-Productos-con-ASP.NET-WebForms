@@ -17,7 +17,6 @@ namespace SG_de_Productos.Controllers
 
             try
             {
-                bool result = false;
                 List<object> User = indexSP.User.GetUser(usuario);
 
                 if (User.Count == 0)
