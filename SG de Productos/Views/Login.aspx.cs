@@ -1,7 +1,9 @@
 ﻿using SG_de_Productos.Controllers;
 using System;
+using System.Threading.Tasks;
 using System.Web.UI;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace SG_de_Productos
 {
@@ -14,7 +16,7 @@ namespace SG_de_Productos
 
         }
 
-        protected void login(object sender, EventArgs e)
+        protected  void login(object sender, EventArgs e)
         {
             Models.UserModel usuarioLogin = new Models.UserModel
             {
@@ -26,7 +28,11 @@ namespace SG_de_Productos
 
             if (data.StatusCode == 400)
             {
-                MessageBox.Show(data.Value.ToString());
+                //Task.Run(() => {
+                //    lblMessageError.Text = data.Value.ToString();
+                //    Task.Delay(40000);
+                //    lblMessageError.Text = "";
+                //});
                 return;
             }
             
@@ -40,8 +46,8 @@ namespace SG_de_Productos
 
         public void clearFormLogin()
         {
-            //txtcontraseña.Text = "";
-            //MASKEDTXTUSUARIO.Text = "";
+            txtEmail.Text = "";
+            txtPassword.Text = "";
         }
     }
 }

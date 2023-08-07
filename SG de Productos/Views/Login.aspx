@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-   <div class="row">
+   <div class="row vh-100">
 
        <div >
            <asp:Label class="h2" ID="lblBienvenida" runat="server" Text="Iniciar Sesion"></asp:Label>
@@ -17,6 +17,10 @@
            <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
            <asp:TextBox ID="txtPassword" CssClass="form-control" TextMode="Password" runat="server" placeholder="Password"></asp:TextBox>
        </div>
+
+       <br />
+
+       <asp:Label ID="lblMessageError" runat="server" Text=""></asp:Label>
 
        <hr />
 
