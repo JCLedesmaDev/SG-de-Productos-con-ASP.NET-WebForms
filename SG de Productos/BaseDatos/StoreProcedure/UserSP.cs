@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using SG_de_Productos.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -35,13 +37,11 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
             }
         }
 
-        public List<object> GetUser(Models.UserModel usuario)
+        public ObjectResult GetUser(Models.UserModel usuario)
         {
+            ObjectResult response = new ObjectResult(null);
             try
             {
-
-                List<object> UserFind = new List<object>();
-
                 this.cmd.Connection = this.OpenConnection(); // Abrimos conexion
                 this.cmd.CommandText = "SpObtenerUsuario"; /// Nombramos el procedimiento creado en el SqlServer
                 this.cmd.CommandType = CommandType.StoredProcedure; // Indicamos que estamos utilizando procedimientos almacenados (Por lo de arriba) 
@@ -52,11 +52,15 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
                 this.reader = this.cmd.ExecuteReader(); // Almacenamos los resultados de nuestra peticion
 
                 while (this.reader.Read())
-                {
-                    UserFind.Add(this.reader[0]);
+                { 
+                    response.Value = new Models.UserModel
+                    {
+                        _Id = (int)this.reader[0],
+                        _Email = this.reader[1].ToString(),
+                        _NombreCompleto = this.reader[3].ToString(),
+                    };
                 }
-
-                return UserFind;
+                return response;
             }
             catch (Exception e)
             {

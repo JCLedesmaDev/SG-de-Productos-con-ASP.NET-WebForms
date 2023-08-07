@@ -13,24 +13,25 @@ namespace SG_de_Productos.Controllers
 
         public ObjectResult Login(Models.UserModel usuario)
         {
-            ObjectResult response = new ObjectResult(null);
+            ObjectResult data = new ObjectResult(null);
 
             try
             {
-                List<object> User = indexSP.User.GetUser(usuario);
+                var response = indexSP.User.GetUser(usuario);
 
-                if (User.Count == 0)
+                if (response.Value == null )
                 {
-                    throw new Exception("Ocurrio un error a la hora de iniciar sesion");
+                    throw new Exception("Usuario inexistente. Intentelo nuevamente");
                 }
 
-                response.Value = User[0];
-                return response;
+                data.Value = response.Value;
+                return data;
             } 
             catch (Exception e)
             {
-                Console.WriteLine("Ocurrio un error", e.Message);
-                return response;
+                data.StatusCode = 400;
+                data.Value = e.Message;
+                return data;
             }
         }
 

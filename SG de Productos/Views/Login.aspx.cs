@@ -22,18 +22,17 @@ namespace SG_de_Productos
                 _Password = txtPassword.Text,
             };
 
-            var UserData = userController.Login(usuarioLogin);
+            var data = userController.Login(usuarioLogin);
 
-            if (UserData != null)
+            if (data.StatusCode == 400)
             {
-                //Agregamos una sesion de usuario
-                Session["UserData"] = UserData;
-                Response.Redirect("/Default.aspx");
+                MessageBox.Show(data.Value.ToString());
+                return;
             }
-            else
-            {
-                MessageBox.Show("Datos ingresados incorrectos, intentelo nuevamente");
-            }
+            
+            //Agregamos una sesion de usuario
+            Session["UserData"] = data.Value;
+            Response.Redirect("~/Views/Default.aspx");
 
             clearFormLogin();
         }

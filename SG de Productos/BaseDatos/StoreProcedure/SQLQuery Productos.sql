@@ -181,12 +181,11 @@ CREATE PROC SpObtenerUsuario
 @email VARCHAR (100),
 @password VARCHAR (100)
 AS
-SELECT TablaUsuarios.Email, TablaUsuarios.NombreCompleto FROM TablaUsuarios 
-WHERE 
-TablaUsuarios.Email = @email AND TablaUsuarios.Pass = @password
+SELECT * FROM TablaUsuarios 
+WHERE TablaUsuarios.Email = @email AND TablaUsuarios.Pass = @password
 GO
 
 
---exec SpObtenerUsuario 'juanchi@gmail.com', '123'
+exec SpAgregarUsuario 'juanchi@gmail.com', '123', 'Juan Cruz Ledesma', GETDATE
 
  
