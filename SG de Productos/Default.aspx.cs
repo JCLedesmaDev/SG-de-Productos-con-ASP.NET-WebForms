@@ -13,6 +13,8 @@ namespace SG_de_Productos
         {
             if (Session["UserData"] != null)
             {
+                //string usuariologueado = Session["usuariologueado"].ToString();
+                //lblBienvenida.Text = "Bienvenido/a " + usuariologueado;
                 Response.Redirect("Default.aspx");
             }
             else

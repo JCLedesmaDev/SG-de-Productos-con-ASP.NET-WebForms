@@ -15,6 +15,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="index.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -42,29 +43,28 @@
 
         <% if (!Request.Url.AbsolutePath.Contains("Login")) { %>
                 <!-- Mostrar el componente si la URL contiene "url-a-validar" -->
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" runat="server" href="~/">SG de Productos</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a runat="server" href="~/Views/About">Productos</a></li>
-                            <li><a runat="server" href="~/Views/Contact">Categoria</a></li>
-                            <li><a runat="server" href="~/Views/Contact">Marcas</a></li>
-                            <li> 
-                                <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesion" CssClas="btn btn-dark" OnClick="logOut" />
-                            </li>
-                        </ul>
+                <div class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" runat="server" href="~/">SG de Productos</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="~/Views/About">Productos</a></li>
+                                <li><a runat="server" href="~/Views/Contact">Categoria</a></li>
+                                <li><a runat="server" href="~/Views/Contact">Marcas</a></li>
+                                <li> 
+                                    <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesion" CssClas="btn btn-dark" OnClick="logOut" />
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
- 
         <% } %>
 
         <div class="container body-content">

@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <asp:Label 
-            ID="lblBienvenida" 
+            ID="lblTitle" 
             runat="server" 
             Text="Bienvenidos al Sistema de Gestion de Productos" 
             CssClass="h3"
