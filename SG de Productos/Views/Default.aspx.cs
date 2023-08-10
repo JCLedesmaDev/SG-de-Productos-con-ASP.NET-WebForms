@@ -17,5 +17,11 @@ namespace SG_de_Productos
                 Response.Redirect("~/Views/Login.aspx");
             }
         }
+
+        protected void logOut(object sender, EventArgs e)
+        {
+            Session.Remove("UserData");
+            Response.Redirect("/Views/Login.aspx");
+        }
     }
 }
