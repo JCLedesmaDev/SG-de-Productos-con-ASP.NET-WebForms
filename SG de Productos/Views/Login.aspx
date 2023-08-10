@@ -26,7 +26,21 @@
 
        <div >
            <asp:Button ID="btnLogin" CssClass="btn btn-primary btn-dark" runat="server" Text="Ingresar" OnClick="login" />
+            
+           <asp:Button ID="btnToRegister" CssClass="btn btn-primary btn-dark" runat="server" Text="Ir a registrar" OnClick="toRegister" />            
        </div>
    </div>
 
+<script type="text/javascript">
+    function MostrarMensaje(mensaje) {
+        const lblMensaje = document.getElementById('<%= lblMessageError.ClientID %>');
+        lblMensaje.innerText = mensaje;
+
+        setTimeout(function () {
+            lblMensaje.innerText = "";
+        }, 5000); // 5000 ms = 5 segundos
+    }
+</script>
+
 </asp:Content>
+

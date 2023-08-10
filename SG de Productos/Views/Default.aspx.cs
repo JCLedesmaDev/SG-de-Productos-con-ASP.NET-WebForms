@@ -11,6 +11,7 @@ namespace SG_de_Productos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["UserData"] == null)
             {
                 Response.Redirect("~/Views/Login.aspx");

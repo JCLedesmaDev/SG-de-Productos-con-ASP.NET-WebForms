@@ -1,13 +1,9 @@
 ﻿using SG_de_Productos.Controllers;
 using System;
-using System.Threading.Tasks;
 using System.Web.UI;
-using System.Windows.Forms;
-using Timer = System.Windows.Forms.Timer;
-
 namespace SG_de_Productos
 {
-    public partial class Login : Page
+    public partial class Register : Page
     {
         private UserController userController = new UserController();
 
@@ -15,15 +11,16 @@ namespace SG_de_Productos
         {
         }
 
-        protected  void login(object sender, EventArgs e)
+        protected  void register(object sender, EventArgs e)
         {
             Models.UserModel usuarioLogin = new Models.UserModel
             {
-                _Email = txtEmail.Text,
-                _Password = txtPassword.Text,
+                _Email = txtRegisterEmail.Text,
+                _Password = txtRegisterPassword.Text,
+                _NombreCompleto = txtRegisterNombreCompleto.Text
             };
 
-            var data = userController.Login(usuarioLogin);
+            var data = userController.Registrarse(usuarioLogin);
 
             if (data.StatusCode == 400)
             {       
@@ -35,23 +32,19 @@ namespace SG_de_Productos
                 return;
             }
             
-            //Agregamos una sesion de usuario
-            Session["UserData"] = data.Value;
-            Response.Redirect("~/Views/Default.aspx");
+            Response.Redirect("~/Views/Login.aspx");
 
             clearFormLogin();
         }
 
-
-        protected void toRegister(object sender, EventArgs e)
+        protected void toLogin(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Register.aspx");
+            Response.Redirect("~/Views/Login.aspx");
         }
-
         public void clearFormLogin()
         {
-            txtEmail.Text = "";
-            txtPassword.Text = "";
+            //txtRegisterEmail.Text = "";
+            //txtRegisterPassword.Text = "";
         }
     }
 }

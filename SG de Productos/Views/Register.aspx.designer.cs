@@ -11,53 +11,71 @@ namespace SG_de_Productos
 {
 
 
-    public partial class Login
+    public partial class Register
     {
 
         /// <summary>
-        /// Control lblBienvenida.
+        /// Control lblRegisterWelbome.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBienvenida;
+        protected global::System.Web.UI.WebControls.Label lblRegisterWelbome;
 
         /// <summary>
-        /// Control lblEmail.
+        /// Control lblRegisterEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
+        protected global::System.Web.UI.WebControls.Label lblRegisterEmail;
 
         /// <summary>
-        /// Control txtEmail.
+        /// Control txtRegisterEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtRegisterEmail;
 
         /// <summary>
-        /// Control lblPassword.
+        /// Control lblRegisterPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPassword;
+        protected global::System.Web.UI.WebControls.Label lblRegisterPassword;
 
         /// <summary>
-        /// Control txtPassword.
+        /// Control txtRegisterPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtRegisterPassword;
+
+        /// <summary>
+        /// Control lblRegisterNombreCompleto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegisterNombreCompleto;
+
+        /// <summary>
+        /// Control txtRegisterNombreCompleto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRegisterNombreCompleto;
 
         /// <summary>
         /// Control lblMessageError.
@@ -69,21 +87,21 @@ namespace SG_de_Productos
         protected global::System.Web.UI.WebControls.Label lblMessageError;
 
         /// <summary>
-        /// Control btnLogin.
+        /// Control btnRegister.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Button btnRegister;
 
         /// <summary>
-        /// Control btnToRegister.
+        /// Control btnToLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnToRegister;
+        protected global::System.Web.UI.WebControls.Button btnToLogin;
     }
 }
