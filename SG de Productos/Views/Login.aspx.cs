@@ -1,9 +1,6 @@
 ﻿using SG_de_Productos.Controllers;
 using System;
-using System.Threading.Tasks;
 using System.Web.UI;
-using System.Windows.Forms;
-using Timer = System.Windows.Forms.Timer;
 
 namespace SG_de_Productos
 {
@@ -28,9 +25,9 @@ namespace SG_de_Productos
             if (data.StatusCode == 400)
             {       
                ScriptManager.RegisterStartupScript(
-                   this, GetType(), 
-                   "MostrarMensaje", 
-                   $"MostrarMensaje('{data.Value}');", true
+                   this, GetType(),
+                   "MostrarMensajeLogin",
+                   $"MostrarMensajeLogin('{data.Value}');", true
                    );
                 return;
             }

@@ -38,7 +38,7 @@
    </div>
 
 <script type="text/javascript">
-    function MostrarMensaje(mensaje) {
+    function MostrarMensajeRegister(mensaje) {
         const lblMensaje = document.getElementById('<%= lblMessageError.ClientID %>');
         lblMensaje.innerText = mensaje;
 

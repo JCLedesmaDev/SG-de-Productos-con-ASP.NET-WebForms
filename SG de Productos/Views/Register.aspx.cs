@@ -23,12 +23,12 @@ namespace SG_de_Productos
             var data = userController.Registrarse(usuarioLogin);
 
             if (data.StatusCode == 400)
-            {       
-               ScriptManager.RegisterStartupScript(
-                   this, GetType(), 
-                   "MostrarMensaje", 
-                   $"MostrarMensaje('{data.Value}');", true
-                   );
+            {
+                ScriptManager.RegisterStartupScript(
+                    this, GetType(),
+                    "MostrarMensajeRegister",
+                    $"MostrarMensajeRegister('{data.Value}');", true
+                    );
                 return;
             }
             
