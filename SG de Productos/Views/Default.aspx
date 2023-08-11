@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SG_de_Productos._Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
      <!-- Mostrar el componente si la URL contiene "url-a-validar" -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,8 +29,7 @@
     <div class="jumbotron">
         <asp:Label 
             ID="lblTitle" 
-            runat="server" 
-            Text="Bienvenidos al Sistema de Gestion de Productos" 
+            runat="server"  
             CssClass="h3"
         />
             

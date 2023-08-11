@@ -9,8 +9,10 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
     public class UserSP : ConnectionBD
     {
 
-        public bool CreateUser(Models.UserModel usuario)
+        public ObjectResult CreateUser(Models.UserModel usuario)
         {
+            ObjectResult response = new ObjectResult(null);
+
             try
             {
                 this.cmd.Connection = this.OpenConnection(); // Abrimos conexion 
@@ -24,7 +26,8 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
 
                 this.cmd.ExecuteNonQuery();
 
-                return true;
+                response.Value = true;
+                return response; 
             }
             catch (Exception e)
             {
@@ -47,7 +50,6 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
                 this.cmd.CommandType = CommandType.StoredProcedure; // Indicamos que estamos utilizando procedimientos almacenados (Por lo de arriba) 
 
                 this.cmd.Parameters.AddWithValue("@email", usuario._Email);
-                this.cmd.Parameters.AddWithValue("@password", usuario._Password);
 
                 this.reader = this.cmd.ExecuteReader(); // Almacenamos los resultados de nuestra peticion
 

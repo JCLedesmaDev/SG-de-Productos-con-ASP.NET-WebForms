@@ -38,19 +38,27 @@ namespace SG_de_Productos.Controllers
 
         public ObjectResult Registrarse(Models.UserModel usuario)
         {
-            ObjectResult response = new ObjectResult(null);
+            ObjectResult data = new ObjectResult(null);
 
             try
             {
-                bool result = indexSP.User.CreateUser(usuario);
+                var fndUser = indexSP.User.GetUser(usuario);
 
-                response.Value = result;
-                return response;
+                if (fndUser.Value != null)
+                {
+                    throw new Exception("Usuario existente. Intentelo nuevamente");
+                }
+
+                var result = indexSP.User.CreateUser(usuario);
+
+                data.Value = result;
+                return data;
             }
             catch(Exception e)
             {
-                Console.WriteLine("Ocurrio un error", e.Message);
-                return response;
+                data.StatusCode = 400;
+                data.Value = e.Message;
+                return data;
             }
         }
     }

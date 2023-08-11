@@ -178,11 +178,10 @@ GO
 
 ------ Obtener usuario
 CREATE PROC SpObtenerUsuario
-@email VARCHAR (100),
-@password VARCHAR (100)
+@email VARCHAR (100)
 AS
 SELECT * FROM TablaUsuarios 
-WHERE TablaUsuarios.Email = @email AND TablaUsuarios.Pass = @password
+WHERE TablaUsuarios.Email = @email 
 GO
 
 

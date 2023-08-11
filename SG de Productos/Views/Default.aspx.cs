@@ -9,12 +9,17 @@ namespace SG_de_Productos
 {
     public partial class _Default : Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
             if (Session["UserData"] == null)
             {
                 Response.Redirect("~/Views/Login.aspx");
+            }else
+            {
+                Models.UserModel nameComplete = (Models.UserModel)Session["UserData"];
+                lblTitle.Text = $"{nameComplete._NombreCompleto}, bienvenido al Sistema de Gestion de Productos";
             }
         }
 
