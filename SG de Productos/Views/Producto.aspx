@@ -44,7 +44,7 @@
                     </Columns>
 
                     <Columns>
-                        <asp:TemplateField HeaderText="LALLA">
+                        <asp:TemplateField HeaderText="Precio">
                             <ItemTemplate> A
                 <%--                <asp:Button runat="server" Text="Update" CssClass="btn form-control-sm btn-warning" ID="BtnUpdate" OnClick="BtnUpdate_Click"/>
                                 <asp:Button runat="server" Text="Delete" CssClass="btn form-control-sm btn-danger" ID="BtnDelete" OnClick="BtnDelete_Click"/>--%>
@@ -55,8 +55,8 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Opciones del administrador">
                             <ItemTemplate>
-                                <asp:Button runat="server" Text="Update" CssClass="btn form-control-sm btn-warning" ID="BtnUpdate" OnClick="BtnUpdate_Click"/>
-                                <asp:Button runat="server" Text="Delete" CssClass="btn form-control-sm btn-danger" ID="BtnDelete" OnClick="BtnDelete_Click"/>
+                                <asp:Button runat="server" Text="Eliminar" CssClass="btn form-control-sm btn-warning" ID="BtnUpdate" OnClick="BtnUpdate_Click"/>
+                                <asp:Button runat="server" Text="Actualizar" CssClass="btn form-control-sm btn-danger" ID="BtnDelete" OnClick="BtnDelete_Click"/>
                             </ItemTemplate>
                         </asp:TemplateField> 
                     </Columns>
