@@ -11,13 +11,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" runat="server" href="~/">SG de Productos</a>
+                <a class="navbar-brand" runat="server" href="~/Views/Default">SG de Productos</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a runat="server" href="~/Views/About">Productos</a></li>
-                    <li><a runat="server" href="~/Views/Contact">Categoria</a></li>
-                    <li><a runat="server" href="~/Views/Contact">Marcas</a></li>
+<%--                    <li><a runat="server" href="~/Views/Contact">Categoria</a></li>
+                    <li><a runat="server" href="~/Views/Contact">Marcas</a></li>--%>
                     <li> 
                         <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesion" CssClas="btn btn-dark" OnClick="logOut" />
                     </li>

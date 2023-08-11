@@ -241,9 +241,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\About.aspx" />
     <Content Include="BaseDatos\StoreProcedure\SQLQuery Productos.sql" />
-    <Content Include="Views\Contact.aspx" />
+    <Content Include="Views\Producto.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -302,13 +301,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Views\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BaseDatos\ConnectionBD.cs" />
     <Compile Include="BaseDatos\Index.StoreProcedure.cs" />
@@ -316,12 +308,12 @@
     <Compile Include="BaseDatos\StoreProcedure\MarcaSP.cs" />
     <Compile Include="BaseDatos\StoreProcedure\ProductoSP.cs" />
     <Compile Include="BaseDatos\StoreProcedure\UserSP.cs" />
-    <Compile Include="Views\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Views\Producto.aspx.cs">
+      <DependentUpon>Producto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Views\Producto.aspx.designer.cs">
+      <DependentUpon>Producto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
