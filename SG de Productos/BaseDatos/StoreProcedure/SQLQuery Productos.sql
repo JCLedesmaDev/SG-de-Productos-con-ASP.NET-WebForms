@@ -69,7 +69,9 @@ INSERT INTO TablaUsuarios VALUES
 ('juanchi@gmail.com', '123', 'Juan Cruz' , GETDATE())
 GO
 
-
+INSERT INTO TablaProductos VALUES
+(1, 1, 'COCA', 830)
+GO
 ----------------------------------- Procedimientos Almacenados ----------------------------------- 
 
 

@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col align-self-end">
                 <asp:Label runat="server" ID="lblTitleProd"> Listado de Productos</asp:Label>
-                <asp:Button runat="server" ID="BtnCreate" CssClass="btn btn-success form-control-sm" Text="Crear producto" OnClick="BtnCreate_Click" />
+                <asp:Button runat="server" ID="BtnCreate" CssClass="btn btn-success form-control-sm" Text="Crear producto" OnClick="ShowModal" />
             </div>
         </div>
     </div>
@@ -110,6 +110,8 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <asp:Button runat="server" ID="BtnSave" CssClass="btn btn-success form-control-sm" Text="Guardar" OnClick="BtnSave_Click" />
+               
                 </div>
             </div>
         </div>

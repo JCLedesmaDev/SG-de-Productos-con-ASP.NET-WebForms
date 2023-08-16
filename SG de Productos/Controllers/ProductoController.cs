@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using Microsoft.AspNetCore.Mvc;
 using SG_de_Productos.BaseDatos;
 using SG_de_Productos.BaseDatos.StoreProcedure;
 
@@ -9,9 +11,29 @@ namespace SG_de_Productos.Controllers
 
         private IndexSP indexSP = new IndexSP();
 
-        public DataTable ObtenerListadoProductos()
+
+        public ObjectResult ObtenerListadoProductos()
         {
-            return indexSP.Producto.ListarProductos();
+            ObjectResult data = new ObjectResult(null);
+
+            try
+            {
+                var response = indexSP.Producto.ListarProductos();
+
+                //if (response.Value == null)
+                //{
+                //    throw new Exception("Usuario inexistente. Intentelo nuevamente");
+                //}
+
+                //data.Value = response.Value;
+                return data;
+            }
+            catch (Exception e)
+            {
+                data.StatusCode = 400;
+                data.Value = e.Message;
+                return data;
+            }
         }
 
         public string InsertarProducto(Models.ProductoModel producto)
