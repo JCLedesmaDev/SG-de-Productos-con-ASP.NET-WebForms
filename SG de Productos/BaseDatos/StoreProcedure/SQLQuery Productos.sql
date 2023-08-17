@@ -121,6 +121,8 @@ SELECT
 	TablaProductos.Id, 
 	TablaProductos.Descripcion, 
 	TablaProductos.Precio, 
+	TablaProductos.IdCategoria,
+	TablaProductos.IdMarca,
 	TablaCategorias.Descripcion AS Categoria, 
 	TablaMarcas.Descripcion AS Marca 
 FROM TablaProductos 
@@ -185,8 +187,3 @@ AS
 SELECT * FROM TablaUsuarios 
 WHERE TablaUsuarios.Email = @email 
 GO
-
-
-exec SpAgregarUsuario 'juanchi@gmail.com', '123', 'Juan Cruz Ledesma', GETDATE
-
- 

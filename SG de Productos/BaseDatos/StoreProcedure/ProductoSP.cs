@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,9 +9,11 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
 {
     public class ProductoSP: ConnectionBD
     {
-        public DataTable ListarProductos()
+        public ObjectResult ListarProductos()
         {
-            DataTable Table = new DataTable();
+            ObjectResult response = new ObjectResult(null);
+
+            List<Models.ProductoModel> list = new List<Models.ProductoModel>();
 
             try
             {
@@ -20,9 +23,23 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
 
                 this.reader = this.cmd.ExecuteReader(); // Almacenamos los resultados de nuestra peticion
 
-                Table.Load(this.reader); // Cargamos la tabla con los datos obtenidos
+                while (this.reader.Read())
+                {
+                    Models.ProductoModel prod = new Models.ProductoModel {
+                        _Id = (int)this.reader["Id"],
+                        _Descripcion = this.reader["Descripcion"].ToString(),
+                        _Precio = (double)this.reader["Precio"],
+                        _IdCategoria = (int)this.reader["IdCategoria"],
+                        _IdMarca = (int)this.reader["IdMarca"],
+                        _Categoria = new Models.CategoriaModel { _Descripcion = this.reader["Categoria"].ToString() },
+                        _Marca = new Models.MarcaModel { _Descripcion = this.reader["Marca"].ToString() }
+                    };
+           
+                    list.Add(prod);
+                }
 
-                return Table;
+                response.Value = list;
+                return response;
             }
             catch (Exception e)
             {

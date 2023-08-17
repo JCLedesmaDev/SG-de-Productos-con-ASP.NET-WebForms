@@ -17,24 +17,27 @@ namespace SG_de_Productos
 
         protected void Page_Load(object sender, EventArgs e)
         {
-   
-            //if (Session["UserData"] == null)
-            //{
-            //    Response.Redirect("~/Views/Login.aspx");
-            //    return;
-            //}
 
-
-            ObjectResult asd = productoController.ObtenerListadoProductos();
-
-            ListadoProductos.Add(new Models.ProductoModel
+            if (Session["UserData"] == null)
             {
-                _Id = 1,
-                _Categoria = new Models.CategoriaModel { _Descripcion = "LELE" },
-                _Marca = new Models.MarcaModel { _Descripcion = "LALA" },
-                _Descripcion = "PEPSI",
-                _Precio = 3000
-            });
+                Response.Redirect("~/Views/Login.aspx");
+                return;
+            }
+
+
+            ObjectResult res = productoController.ObtenerListadoProductos();
+
+            if (res.StatusCode == 400)
+            {
+                ScriptManager.RegisterStartupScript(
+                  this, GetType(),
+                  "MostrarMensajeLogin",
+                  $"MostrarMensajeLogin('{res.Value}');", true
+                  );
+                return;
+            }
+
+            ListadoProductos = (List<Models.ProductoModel>)res.Value;
 
             if (!IsPostBack)
             {
@@ -42,9 +45,6 @@ namespace SG_de_Productos
                 repeaterProductos.DataSource = ListadoProductos;
                 repeaterProductos.DataBind();
             }
-
-
-
         }
 
 

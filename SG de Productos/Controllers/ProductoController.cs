@@ -18,14 +18,9 @@ namespace SG_de_Productos.Controllers
 
             try
             {
-                var response = indexSP.Producto.ListarProductos();
+                ObjectResult response = indexSP.Producto.ListarProductos();
 
-                //if (response.Value == null)
-                //{
-                //    throw new Exception("Usuario inexistente. Intentelo nuevamente");
-                //}
-
-                //data.Value = response.Value;
+                data.Value = response.Value;
                 return data;
             }
             catch (Exception e)
