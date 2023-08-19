@@ -308,6 +308,8 @@
     <Compile Include="BaseDatos\StoreProcedure\MarcaSP.cs" />
     <Compile Include="BaseDatos\StoreProcedure\ProductoSP.cs" />
     <Compile Include="BaseDatos\StoreProcedure\UserSP.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Views\Producto.aspx.cs">
       <DependentUpon>Producto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
