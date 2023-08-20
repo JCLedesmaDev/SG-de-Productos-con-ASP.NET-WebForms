@@ -93,12 +93,12 @@ namespace SG_de_Productos
                 Models.ProductoModel fndProducto = ListadoProductos.Find(prod => {
                     return prod._Id == productoId;
                 });
-
+                                                                    
                 txtNombreProducto.Text = fndProducto._Descripcion;
                 selectCategoria.SelectedValue = fndProducto._IdCategoria.ToString();
                 selectMarca.SelectedValue = fndProducto._IdMarca.ToString();
                 txtPrecioProducto.Text = fndProducto._Precio.ToString();
-
+                                                                                    
                 ScriptManager.RegisterStartupScript(
                     this, 
                     this.GetType(), 
@@ -107,7 +107,6 @@ namespace SG_de_Productos
                     true
                 );
             }
-      
         }
 
 
