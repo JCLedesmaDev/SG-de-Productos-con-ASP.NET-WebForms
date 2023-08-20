@@ -113,6 +113,11 @@ namespace SG_de_Productos
 
         protected void ShowModal(object sender, EventArgs e)
         {
+            txtNombreProducto.Text = "";
+            selectCategoria.SelectedValue = "1";
+            selectMarca.SelectedValue = "1";
+            txtPrecioProducto.Text = "";
+
             ScriptManager.RegisterStartupScript(
                 this, 
                 this.GetType(), 
