@@ -107,20 +107,26 @@ namespace SG_de_Productos
                     true
                 );
             }
+      
         }
 
 
         protected void ShowModal(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "myModal", "$('#myModal').modal();", true);
+            ScriptManager.RegisterStartupScript(
+                this, 
+                this.GetType(), 
+                "myModal", 
+                "$('#myModal').modal();", 
+                true
+            );
         }
-
-
-
+        
+        
+        
         protected void selectCategoriaOption(object sender, EventArgs e)
         {
             //string opcionSeleccionada = selectCategoria.SelectedValue;
-
         }
 
         protected void selectMarcaOption(object sender, EventArgs e)
@@ -137,5 +143,6 @@ namespace SG_de_Productos
         {
 
         }
+    
     }
 }
