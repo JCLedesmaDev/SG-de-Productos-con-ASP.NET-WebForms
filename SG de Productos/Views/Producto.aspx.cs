@@ -13,8 +13,13 @@ namespace SG_de_Productos
     {
 
         private ProductoController productoController = new ProductoController();
-        protected List<Models.ProductoModel> ListadoProductos = new List<Models.ProductoModel>();
+        private CategoriaController categoriaController = new CategoriaController();
+        private MarcaController marcaController = new MarcaController();
 
+        protected List<Models.ProductoModel> ListadoProductos = new List<Models.ProductoModel>();
+        protected List<Models.MarcaModel> ListadoMarca = new List<Models.MarcaModel>();
+        protected List<Models.CategoriaModel> ListadoCategoria= new List<Models.CategoriaModel>();
+     
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -24,26 +29,45 @@ namespace SG_de_Productos
                 return;
             }
 
+            ObjectResult ObtenerListadoProductos = productoController.ObtenerListadoProductos();
+            ObjectResult ObtenerListadoMarca = marcaController.ObtenerListadoMarca();
+            ObjectResult ObtenerListadoCategoria = categoriaController.ObtenerListadoCategoria();
 
-            ObjectResult res = productoController.ObtenerListadoProductos();
-
-            if (res.StatusCode == 400)
+            ListadoProductos = (List<Models.ProductoModel>)ObtenerListadoProductos.Value;
+ 
+            if (ObtenerListadoProductos.StatusCode == 400)
             {
                 ScriptManager.RegisterStartupScript(
                   this, GetType(),
-                  "MostrarMensajeLogin",
-                  $"MostrarMensajeLogin('{res.Value}');", true
-                  );
+                  "MostrarMensajeProducto",
+                  $"MostrarMensajeProducto('{ObtenerListadoProductos.Value}');", 
+                  true
+                );
                 return;
             }
 
-            ListadoProductos = (List<Models.ProductoModel>)res.Value;
-
             if (!IsPostBack)
             {
+
                 // Enlazar la fuente de datos al Repeater
-                repeaterProductos.DataSource = ListadoProductos;
+                repeaterProductos.DataSource = ObtenerListadoProductos.Value;
                 repeaterProductos.DataBind();
+
+
+                // Agregar opciones al DropDownList
+                foreach (
+                    Models.CategoriaModel cat in (List<Models.CategoriaModel>)ObtenerListadoCategoria.Value
+                )
+                {
+                    selectCategoria.Items.Add(new ListItem(cat._Descripcion, cat._Id.ToString()));
+                }
+
+                foreach (
+                    Models.MarcaModel marca in (List<Models.MarcaModel>)ObtenerListadoMarca.Value
+                )
+                {
+                    selectMarca.Items.Add(new ListItem(marca._Descripcion, marca._Id.ToString()));
+                }
             }
         }
 
@@ -71,13 +95,17 @@ namespace SG_de_Productos
                 });
 
                 txtNombreProducto.Text = fndProducto._Descripcion;
-                /// COMPLETAR LOS 2 SELECTS
+                selectCategoria.SelectedValue = fndProducto._IdCategoria.ToString();
+                selectMarca.SelectedValue = fndProducto._IdMarca.ToString();
                 txtPrecioProducto.Text = fndProducto._Precio.ToString();
 
-
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "myModal", "$('#myModal').modal();", true);
-
+                ScriptManager.RegisterStartupScript(
+                    this, 
+                    this.GetType(), 
+                    "myModal", 
+                    "$('#myModal').modal();", 
+                    true
+                );
             }
         }
 
@@ -86,26 +114,28 @@ namespace SG_de_Productos
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "myModal", "$('#myModal').modal();", true);
         }
-        protected void BtnSave_Click(object sender, EventArgs e)
-        {
 
-        }
 
 
         protected void selectCategoriaOption(object sender, EventArgs e)
         {
             //string opcionSeleccionada = selectCategoria.SelectedValue;
 
-            // Agregar opciones al DropDownList
-            //foreach (string opcion in opciones)
-            //{
-            //    ddlOpciones.Items.Add(new ListItem(opcion));
-            //}
-        }        
-        
+        }
+
         protected void selectMarcaOption(object sender, EventArgs e)
         {
             //string opcionSeleccionada = selectMarca.SelectedValue;
+        }
+        
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

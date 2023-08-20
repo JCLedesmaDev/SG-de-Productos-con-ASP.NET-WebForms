@@ -117,4 +117,18 @@
         </div>
     </div>
 
+       <asp:Label ID="lblMessageProducto" runat="server" Text=""></asp:Label>
+
+
+    <script type="text/javascript">
+        function MostrarMensajeProducto(mensaje) {
+            const lblMensaje = document.getElementById('<%= lblMessageProducto.ClientID %>');
+            lblMensaje.innerText = mensaje;
+
+            setTimeout(function () {
+                lblMensaje.innerText = "";
+            }, 5000); // 5000 ms = 5 segundos
+        }
+    </script>
+
 </asp:Content>
