@@ -4,8 +4,8 @@
 
      <!-- Mostrar el componente si la URL contiene "url-a-validar" -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
+        <div class="container row">
+            <div class="navbar-header col" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -13,16 +13,14 @@
                 </button>
                 <a class="navbar-brand" runat="server" href="~/Views/Default">SG de Productos</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a runat="server" href="~/Views/Producto">Productos</a></li>
-                    <li> 
-                        <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesion" CssClas="btn btn-dark" OnClick="logOut" />
-                    </li>
-                </ul>
+              <div class="asd">
+                    <a runat="server" href="~/Views/Producto">Productos</a>
+                     <asp:Button ID="btnLogOut" runat="server" Text="Cerrar Sesion" CssClas="btn btn-dark" OnClick="logOut" />
             </div>
         </div>
     </div>
+ 
+    <br />
 
     <div class="jumbotron">
         <asp:Label 

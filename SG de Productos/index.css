@@ -26,3 +26,20 @@
 .border {
     border: 1px solid #000;
 }
+
+ #myModal .modal-content {
+     padding-left: 20px; /* Ajusta el valor según tu necesidad */
+ }
+
+
+ .asd{
+     width:550px;
+     display: flex;
+     justify-content:space-between !important;
+     align-items: center !important;
+     align-content: center;
+     margin-top:10px;
+ }
+ a{
+     color:#fff;
+ }

@@ -51,15 +51,6 @@ namespace SG_de_Productos
         protected global::System.Web.UI.WebControls.Repeater repeaterProductos;
 
         /// <summary>
-        /// Control lblNombreProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreProducto;
-
-        /// <summary>
         /// Control txtNombreProducto.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace SG_de_Productos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreProducto;
-
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// Control selectCategoria.
@@ -87,15 +69,6 @@ namespace SG_de_Productos
         protected global::System.Web.UI.WebControls.DropDownList selectCategoria;
 
         /// <summary>
-        /// Control lblMarcaProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMarcaProducto;
-
-        /// <summary>
         /// Control selectMarca.
         /// </summary>
         /// <remarks>
@@ -103,15 +76,6 @@ namespace SG_de_Productos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList selectMarca;
-
-        /// <summary>
-        /// Control lblPrecioProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrecioProducto;
 
         /// <summary>
         /// Control txtPrecioProducto.
