@@ -53,10 +53,12 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
         }
 
 
-        public string InsertarProducto(Models.ProductoModel producto)
+        public ObjectResult InsertarProducto(Models.ProductoModel producto)
         {
             try
             {
+                ObjectResult response = new ObjectResult(null);
+
                 this.cmd.Connection = this.OpenConnection(); // Abrimos conexion
                 this.cmd.CommandText = "SpAgregarProducto"; /// Nombramos el procedimiento creado en el SqlServer
                 this.cmd.CommandType = CommandType.StoredProcedure; // Indicamos que estamos utilizando procedimientos almacenados (Por lo de arriba) 
@@ -68,7 +70,8 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
 
                 this.cmd.ExecuteNonQuery();
 
-                return "Se inserto correctamente";
+                response.Value = "Se guardo correctamente";
+                return response;
             }
             catch (Exception e)
             {
@@ -81,10 +84,12 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
             }
         }
 
-        public string EditarProducto(Models.ProductoModel producto)
+        public ObjectResult EditarProducto(Models.ProductoModel producto)
         {
             try
             {
+                ObjectResult response = new ObjectResult(null);
+
                 this.cmd.Connection = this.OpenConnection(); // Abrimos conexion 
                 this.cmd.CommandText = "SpEditarProducto"; /// Nombramos el procedimiento creado en el SqlServer
                 this.cmd.CommandType = CommandType.StoredProcedure; // Indicamos que estamos utilizando procedimientos almacenados (Por lo de arriba) 
@@ -97,7 +102,8 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
 
                 this.cmd.ExecuteNonQuery();
 
-                return "Se edito correctamente";
+                response.Value =  "Se edito correctamente";
+                return response;
             }
             catch (Exception e)
             {
@@ -110,10 +116,12 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
             }
         }
 
-        public string EliminarProducto(int idProd)
+        public ObjectResult EliminarProducto(int idProd)
         {
             try
             {
+                ObjectResult response = new ObjectResult(null);
+
                 this.cmd.Connection = this.OpenConnection(); // Abrimos conexion
                 this.cmd.CommandText = "SpEliminarProducto"; /// Nombramos el procedimiento creado en el SqlServer
                 this.cmd.CommandType = CommandType.StoredProcedure; // Indicamos que estamos utilizando procedimientos almacenados (Por lo de arriba) 
@@ -122,7 +130,8 @@ namespace SG_de_Productos.BaseDatos.StoreProcedure
 
                 this.cmd.ExecuteNonQuery();
 
-                return "Se elimino correctamente";
+                response.Value = "Se elimino correctamente";
+                return response;
             }
             catch (Exception e)
             {

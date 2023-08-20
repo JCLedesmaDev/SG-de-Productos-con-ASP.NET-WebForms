@@ -74,7 +74,7 @@
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modal ABM -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -90,34 +90,53 @@
                         <asp:TextBox ID="txtNombreProducto" CssClass="form-control" runat="server" placeholder="Nombre del producto"></asp:TextBox>
                     </div>
 
-                    <div>
-                        <asp:Label ID="lblCategoriaProducto" runat="server" Text="Categoria del Producto:"></asp:Label>
-                        <asp:DropDownList ID="selectCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="selectCategoriaOption">
+                     <div>
+                        <asp:Label ID="Label1" runat="server" Text="Categoria del Producto:"></asp:Label>
+                        <asp:DropDownList ID="selectCategoria" runat="server" AutoPostBack="false" OnSelectedIndexChanged="selectCategoriaOption">
                         </asp:DropDownList>
                     </div>
 
                     <div>
                         <asp:Label ID="lblMarcaProducto" runat="server" Text="Marca del Producto:"></asp:Label>
-                        <asp:DropDownList ID="selectMarca" runat="server" AutoPostBack="true" OnSelectedIndexChanged="selectMarcaOption">
+                        <asp:DropDownList ID="selectMarca" runat="server" AutoPostBack="false" OnSelectedIndexChanged="selectMarcaOption">
                         </asp:DropDownList>
                     </div>
+               
                     <div>
                         <asp:Label ID="lblPrecioProducto" runat="server" Text="Precio del Producto:"></asp:Label>
-                        <asp:TextBox ID="txtPrecioProducto" CssClass="form-control" runat="server" placeholder="Precio del producto"></asp:TextBox>
+                        <asp:TextBox ID="txtPrecioProducto" TextMode="Number" CssClass="form-control" runat="server" placeholder="Precio del producto"></asp:TextBox>
                     </div>
-
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <asp:Button runat="server" ID="BtnSave" CssClass="btn btn-success form-control-sm" Text="Guardar" OnClick="BtnSave_Click" />
+                    <asp:Button runat="server" ID="BtnSave" CssClass="btn btn-success form-control-sm" Text="Guardar" OnClick="BtnSave_Click" />    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-- MODAL CONFIRMACION --%>
+      <div id="myModalConfirm" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        ¿Deseas eliminar este producto?
+                    </h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <asp:Button runat="server" ID="Button1" CssClass="btn btn-success form-control-sm" Text="Aceptar" OnClick="BtnDelete_Click" />
                
                 </div>
             </div>
         </div>
     </div>
 
-       <asp:Label ID="lblMessageProducto" runat="server" Text=""></asp:Label>
+   <asp:Label ID="lblMessageProducto" runat="server" Text=""></asp:Label>
 
 
     <script type="text/javascript">
@@ -131,4 +150,5 @@
         }
     </script>
 
+    <asp:Label runat="server" ID="idProdcutoSelected" Visible="false"/>
 </asp:Content>

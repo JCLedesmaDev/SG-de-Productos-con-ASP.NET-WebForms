@@ -3,6 +3,7 @@ using SG_de_Productos.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,7 +20,7 @@ namespace SG_de_Productos
         protected List<Models.ProductoModel> ListadoProductos = new List<Models.ProductoModel>();
         protected List<Models.MarcaModel> ListadoMarca = new List<Models.MarcaModel>();
         protected List<Models.CategoriaModel> ListadoCategoria= new List<Models.CategoriaModel>();
-     
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,13 +35,13 @@ namespace SG_de_Productos
             ObjectResult ObtenerListadoCategoria = categoriaController.ObtenerListadoCategoria();
 
             ListadoProductos = (List<Models.ProductoModel>)ObtenerListadoProductos.Value;
- 
+
             if (ObtenerListadoProductos.StatusCode == 400)
             {
                 ScriptManager.RegisterStartupScript(
                   this, GetType(),
                   "MostrarMensajeProducto",
-                  $"MostrarMensajeProducto('{ObtenerListadoProductos.Value}');", 
+                  $"MostrarMensajeProducto('{ObtenerListadoProductos.Value}');",
                   true
                 );
                 return;
@@ -48,11 +49,9 @@ namespace SG_de_Productos
 
             if (!IsPostBack)
             {
-
                 // Enlazar la fuente de datos al Repeater
                 repeaterProductos.DataSource = ObtenerListadoProductos.Value;
                 repeaterProductos.DataBind();
-
 
                 // Agregar opciones al DropDownList
                 foreach (
@@ -71,7 +70,6 @@ namespace SG_de_Productos
             }
         }
 
-
         protected void logOut(object sender, EventArgs e)
         {
             Session.Remove("UserData");
@@ -81,17 +79,23 @@ namespace SG_de_Productos
 
         protected void onExecuteAction(object source, RepeaterCommandEventArgs e)
         {
-            int productoId = Convert.ToInt32(e.CommandArgument); // Obtener el argumento del botón
+            idProdcutoSelected.Text = e.CommandArgument.ToString();
 
             if (e.CommandName == "Delete")
             {
-                // Llamar al método deseado pasando el productoId
+                ScriptManager.RegisterStartupScript(
+                    this,
+                    this.GetType(),
+                    "myModalConfirm",
+                    "$('#myModalConfirm').modal();",
+                    true
+                );
             }            
             
             if (e.CommandName == "Update")
             {
                 Models.ProductoModel fndProducto = ListadoProductos.Find(prod => {
-                    return prod._Id == productoId;
+                    return prod._Id == Convert.ToInt32(e.CommandArgument);
                 });
                                                                     
                 txtNombreProducto.Text = fndProducto._Descripcion;
@@ -126,8 +130,64 @@ namespace SG_de_Productos
             );
         }
         
-        
-        
+                
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            ObjectResult response = new ObjectResult(null);
+
+            Models.ProductoModel prod = new Models.ProductoModel
+            {
+                _Descripcion = txtNombreProducto.Text.ToString(),
+                _IdCategoria = int.Parse(selectCategoria.SelectedValue),
+                _IdMarca = int.Parse(selectMarca.SelectedValue),
+                _Precio = double.Parse(txtPrecioProducto.Text),
+            };
+
+            if (idProdcutoSelected.Text != "")
+            {
+                prod._Id = int.Parse(idProdcutoSelected.Text);
+                response = productoController.EditarProducto(prod);
+            } else
+            {
+                prod._Id = 0;
+                response = productoController.InsertarProducto(prod);
+            }
+
+            if (response.StatusCode == 400)
+            {
+                ScriptManager.RegisterStartupScript(
+                  this, GetType(),
+                  "MostrarMensajeProducto",
+                  $"MostrarMensajeProducto('{response.Value}');",
+                  true
+                );
+                return;
+            }
+
+            idProdcutoSelected.Text = "";
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            ObjectResult EliminarProducto = productoController.EliminarProducto(
+                int.Parse(idProdcutoSelected.Text)
+            );
+
+            ScriptManager.RegisterStartupScript(
+              this, GetType(),
+              "MostrarMensajeProducto",
+              $"MostrarMensajeProducto('{EliminarProducto.Value}');",
+              true
+            );
+
+            idProdcutoSelected.Text = "";
+            if (EliminarProducto.StatusCode != 400)
+            {
+                Response.Redirect(Request.RawUrl);
+            }
+        }
+
         protected void selectCategoriaOption(object sender, EventArgs e)
         {
             //string opcionSeleccionada = selectCategoria.SelectedValue;
@@ -137,16 +197,5 @@ namespace SG_de_Productos
         {
             //string opcionSeleccionada = selectMarca.SelectedValue;
         }
-        
-        protected void BtnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void BtnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-    
     }
 }

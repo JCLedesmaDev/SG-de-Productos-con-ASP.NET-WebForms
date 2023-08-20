@@ -31,20 +31,60 @@ namespace SG_de_Productos.Controllers
             }
         }
 
-        public string InsertarProducto(Models.ProductoModel producto)
+        public ObjectResult InsertarProducto(Models.ProductoModel producto)
         {
-            return indexSP.Producto.InsertarProducto(producto);
+            ObjectResult data = new ObjectResult(null);
+            try
+            {
+                ObjectResult response = indexSP.Producto.InsertarProducto(producto);
+
+                data.Value = response.Value;
+                return data;
+            }
+            catch (Exception e)
+            {
+                data.StatusCode = 400;
+                data.Value = e.Message;
+                return data;
+            }
         }
 
-        public string EditarProducto(Models.ProductoModel producto)
+        public ObjectResult EditarProducto(Models.ProductoModel producto)
         {
-            return indexSP.Producto.EditarProducto(producto);
+            ObjectResult data = new ObjectResult(null);
+
+            try
+            {
+                ObjectResult response = indexSP.Producto.EditarProducto(producto);
+
+                data.Value = response.Value;
+                return data;
+            }
+            catch (Exception e)
+            {
+                data.StatusCode = 400;
+                data.Value = e.Message;
+                return data;
+            }
         }
 
-        public string EliminarProducto(int idProd)
+        public ObjectResult EliminarProducto(int idProd)
         {
-            return indexSP.Producto.EliminarProducto(idProd);
-        }
+            ObjectResult data = new ObjectResult(null);
 
+            try
+            {
+                ObjectResult response = indexSP.Producto.EliminarProducto(idProd);
+
+                data.Value = response.Value;
+                return data;
+            }
+            catch (Exception e)
+            {
+                data.StatusCode = 400;
+                data.Value = e.Message;
+                return data;
+            }
+        }
     }
 }

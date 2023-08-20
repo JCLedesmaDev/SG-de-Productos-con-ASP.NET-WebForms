@@ -69,13 +69,13 @@ namespace SG_de_Productos
         protected global::System.Web.UI.WebControls.TextBox txtNombreProducto;
 
         /// <summary>
-        /// Control lblCategoriaProducto.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCategoriaProducto;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// Control selectCategoria.
@@ -132,6 +132,15 @@ namespace SG_de_Productos
         protected global::System.Web.UI.WebControls.Button BtnSave;
 
         /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
         /// Control lblMessageProducto.
         /// </summary>
         /// <remarks>
@@ -139,5 +148,14 @@ namespace SG_de_Productos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageProducto;
+
+        /// <summary>
+        /// Control idProdcutoSelected.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idProdcutoSelected;
     }
 }
